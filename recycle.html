@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Recycle</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/layui.css"/>
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./layui.js"></script>
+    <script type="text/javascript" src="./js/wangEditor.min.js"></script>
+    <script type="text/javascript" src="./js/ddsort.js"></script>
+
+</head>
+<css>
+    <style type="text/css" role="main">
+        body,html{
+            background: #3f3f3f;
+
+        }
+        body {
+            font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif; 
+            position: relative;
+        }
+        .shutdown {
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            color: white;
+            text-align: center;
+            z-index: 10000;
+            opacity: 0.8;
+            display: none;
+            padding: 12px 0px 13px;
+            background: rgb(4, 156, 219);
+        }
+        .shutdown i {
+            position: fixed;
+            top: 15px;
+            right: 9px;
+            padding: 0 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .aside{
+            border: 1px solid;
+            padding: 0 0;
+            bottom: 0;
+            top: 0;
+        }
+        .middle{
+            border: 1px solid;
+            padding: 0;         
+        }
+        .right{
+            min-width: 200px;
+            border: 1px solid;
+            padding: 20px 0 0 0; 
+        }
+        .normal-mode{
+            height: 100%;
+        }
+        #editor{
+
+        }
+        .w-e-droplist{
+            z-index: 10003;
+        }
+        .rename-notebook-modal{
+            z-index: 10005;
+        }
+    </style>
+    <style type="text/css" role="aside">
+        .recycle-mode .aside{
+            background: #3f3f3f;
+            max-width: 350px;
+            z-index: 10000;
+        }
+        #cont{
+            border: 5px solid #eeeeee;
+        }
+        .recycle-mode .aside a{
+            text-decoration: none;
+        }
+        .recycle-mode .recycle-note-list .recycle-title {
+        	color: #c8c8c8;
+		    padding: 5px 10px;
+		    margin: 0;
+		    font-size: 20px;
+		    line-height: 40px;
+		    font-weight: normal;
+		}
+		.recycle-mode.recycle-mode .recycle-note-list ul li {
+		    position: relative;
+		    padding: 12px 10px;
+		    font-size: 12px;
+		    line-height: 20px;
+		    border-bottom: 1px solid #2f2f2f;
+		    cursor: pointer;
+		}
+		.recycle-mode .recycle-note-list ul li.active {
+			background-color: #2f2f2f;
+			border-right: 3px solid #34ab20;
+		}
+		.recycle-mode .recycle-note-list ul li:hover {
+			background-color: #2f2f2f;
+		}
+		.recycle-mode .recycle-note-list ul li h5 {
+		    width: 180px;
+		    font-weight: normal;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+		    margin: 0px;
+		    overflow: hidden;
+		   	color: #c8c8c8;
+		   	font-size: 14px;
+	   	    line-height: 20px;
+		}
+		.recycle-mode .recycle-note-list ul li span {
+		    position: absolute;
+		    top: 12px;
+		    right: 10px;
+		    display: block;
+		    color: rgb(177, 177, 177);
+		}
+    </style>
+    <style type="text/css" role="middle">
+    	.recycle-mode .middle{
+    		display: block;
+    	}
+    	.recycle-mode .recycle-title{
+		    width: 100%;
+		    padding: 20px 0;
+		    border-bottom: 1px solid #2f2f2f;   	
+		    margin: 0 auto;
+    	}
+    	.recycle-mode .recycle-title .close{
+    		display: inline-block;
+    		vertical-align: middle;
+		    font-size: 40px;
+		    font-weight: 300;
+		    color: #fff;
+		    /* float: none; */
+    	}
+    	.recycle-mode .recycle-title .input-title{
+    		display: inline-block;	
+    		position: relative;
+    		vertical-align: middle;
+		    font-size: 25px;
+		 	font-weight: 400;
+            color: rgb(177, 177, 177);
+            background: rgb(63, 63, 63);
+       		line-height: 40px;
+		    max-width: 740px;
+		    padding-left: 20%;
+		    margin: 0 auto;
+		    overflow: hidden;
+            outline: none;
+            text-overflow: ellipsis;
+            white-space: nowrap; 
+        }
+        .recycle-note-content .recycle-content {
+		    max-width: 750px;
+		    margin: auto;
+		    padding: 30px;
+		    padding-bottom: 50px;
+		}
+		.recycle-note-content .recycle-content {
+			color: #c8c8c8;
+		}
+		.recycle-mode .recycle-note-content .recycle-toolbar{
+			display: block;
+			margin: 0 auto;
+			position: fixed;
+			bottom: 0;
+			z-index: 10005;
+		}
+		.recycle-mode .recycle-note-content .recycle-toolbar .recycle-footer {
+		    width: 800px;
+		    margin: auto;
+		    padding: 8px 0;
+		    border-top: 1px solid #2f2f2f;
+		    text-align: center;
+		}
+		.recycle-toolbar .recycle-footer .btn {
+		    padding: 9px 32px 7px;
+		    margin: 0 10px;
+		    font-size: 16px;
+		}
+		.recycle-toolbar .recycle-footer .btn-mainRed {
+	        background-color: #1f1f1f;
+	        color: #fff;
+		}
+		.recycle-toolbar .recycle-footer .btn-mainRed:hover {
+	        background-color: #2f2f2f;
+		}
+    </style>
+</css>
+<body class="night-mode">
+    <div class="container-fluid">
+        <div class="row recycle-mode">
+            <div class="col-sm-3 col-md-3 aside">
+               <div class="recycle-note-list">
+               		<h2 class="recycle-title" data-remain-count="9"><i class="fa fa-fw fa-trash"></i>回收站 (9)</h2> 
+               		<ul class="unstyled">   
+               			<li class="active recycle-li">  <h5 class="note-name"><i class="fa fa-fw fa-file-text"></i>无标题文章</h5> <span class="delete-date" data-remain-time="42">42 天后清除</span> </li>            
+               			<li class="recycle-li"> <h5 class="note-name"><i class="fa fa-fw fa-file-text"></i>无标题文章</h5> <span class="delete-date" data-remain-time="59">59 天后清除</span> </li>   
+               			<li class="recycle-li"> <h5 class="note-name"><i class="fa fa-fw fa-file-text"></i>无标题文章</h5> <span class="delete-date" data-remain-time="69">69 天后清除</span> </li>   
+               			<li class="recycle-li"> <h5 class="note-name"><i class="fa fa-fw fa-file-text"></i>无标题文章</h5> <span class="delete-date" data-remain-time="69">69 天后清除</span> </li>   
+               			<li class="recycle-li"> <h5 class="note-name"><i class="fa fa-fw fa-file-text"></i>无标题文章</h5> <span class="delete-date" data-remain-time="69">69 天后清除</span> </li>   
+               			<li class="recycle-li"> <h5 class="note-name"><i class="fa fa-fw fa-file-text"></i>无标题文章</h5> <span class="delete-date" data-remain-time="69">69 天后清除</span> </li>   
+               			<li class="recycle-li"> <h5 class="note-name"><i class="fa fa-fw fa-file-text"></i>无标题文章</h5> <span class="delete-date" data-remain-time="69">69 天后清除</span> </li>   
+               		</ul> 
+            	</div>
+            </div>
+            <div class="col-sm-9 col-md-9 middle">
+            	<div class="recycle-note-content">
+	                <div class="recycle-title">
+	                    <h3 class="input-title">新建未命名文章</h3>
+	                    <a href="./editor.html"><button type="button" class="close" aria-hidden="true">×</button></a>
+	                </div>
+	                <div class="recycle-content">
+	                	<p>CNM!</p>
+	                </div>
+					<div class="recycle-toolbar">
+						<div class="recycle-footer text-center">
+							<button data-action="put-back" class="btn btn-success" type="button">恢复文章</button>
+							<button data-action="delete-forever" class="btn btn-mainRed" type="button">彻底删除</button>
+						</div>
+					</div>
+	            </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		setTextAreaHeight();
+	});
+	$(window).on("resize", setTextAreaHeight);
+	function setTextAreaHeight() {
+        var width = window.innerHeight;
+        $(".aside").height(width);
+        $(".middle").height(width);
+        $(".recycle-toolbar").width($('.middle').width());
+    }
+	function getFormatDate(AddDayCount) {
+		    var date = new Date();
+		    var strDate = date.getDate();
+		    date.setDate(strDate+AddDayCount);
+		    var seperator = "/";
+		    var month = date.getMonth() + 1;
+		    
+		    if (month >= 1 && month <= 9) {
+		        month = "0" + month;
+		    }
+		    if (strDate >= 0 && strDate <= 9) {
+		        strDate = "0" + strDate;
+		    } 
+		    var currentdate = date.getFullYear() + seperator + month + seperator + strDate;	            
+		    return currentdate;
+		};       
+</script>
+<script type="text/javascript">
+    $(".recycle-mode .recycle-note-list .unstyled").on('click','li',function(e){
+    	$(this).siblings().removeClass('active');	
+    	$(this).addClass('active');
+    });
+    $(".recycle-mode .recycle-note-list .unstyled").on('mouseenter mouseleave','li',function(e){
+    	var $date=$(this).children('.delete-date');
+    	var tip = $date.text();
+    	var remain=$(this).children('.delete-date').attr("data-remain-time");
+    	if(e.type == 'mouseenter'){
+			$date.html(getFormatDate(parseInt(remain)));
+		}
+		else if(e.type == 'mouseleave'){
+			$date.html(remain+' 天后清除');
+		}
+    });
+
+</script>
+</html>

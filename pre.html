@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Main Page</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+    <style type="text/css" media="screen">
+        @font-face{
+            font-family: myFirstFont;
+            src: url('./fonts/jianti.ttf')
+            ,url('./fonts/jianti.ttf'); /* IE9 */
+        }
+        body{
+            background-color: #F2F2F2;
+        }
+        nav{
+        height: 550px;
+        overflow: hidden；
+        }
+        .search-btn{
+        border-color: #fff;
+        }
+        #title{
+        font-size: 30px;
+        }
+        #navigation{
+        background-image: url(./images/home2.jpg);
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        border-bottom: 0px;
+        box-shadow: 0 3px 10px #cccccc;
+        }
+        #navbar-mask{
+        background-image: url(./images/home2.jpg);
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        position: relative;
+        -webkit-filter:blur(5px) brightness(70%);
+        height: 60px;
+        border:solid 0px #000;
+        }
+        #navbar-top{
+        position: relative;
+        }
+        #navbar-top a{
+        /* color: white; */
+        }
+        #navbar-conatiner{
+            position: relative;
+            margin-top: -60px;
+        }
+        .custom-ul a{
+        height: 60px;
+        line-height: 25px;
+        }
+        #home-recommend-all{
+            position: relative;
+            top: -450px;
+        }
+        #image-slide{
+        }
+        .carousel-control .glyphicon-chevron-left {
+          left: 50%;
+          margin-left: -10px;
+        }
+        .carousel-control {
+          position: absolute;
+          bottom: 0;
+          left: 20%;
+          width: 15%;
+          font-size: 20px;
+          color: #fff;
+          text-align: center;
+
+        }
+        .carousel-control.left {
+            background-image: none;
+        }
+        .carousel-control.right{
+            background-image: none;
+        }
+        #menuContent{
+            /* float: left; */
+            vertical-align:top;
+            display: inline-block;
+            position: relative;
+            padding-right: 0px;
+            height: 460px;
+            width : 20%;
+            min-width: 228px;
+            /* border-right: 1px solid #ddd; */
+            /* border: 0px; */
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            z-index: 3;
+        }
+        #menumask{
+            position: relative;
+            vertical-align:top;
+            display: inline-block;
+            /* display: none; */
+            margin-left:-231px; 
+            height: 460px;
+            width : 20%;
+            min-width: 228px;
+            /* border: 0px; */
+            z-index: 2;
+            /* background-image:  */
+            -webkit-filter:blur(2px);
+            background-color: rgba(7,17,27,.5);
+            opacity: .502;
+        }
+        #home-recommend-carousel{
+
+            position: relative;
+            min-width: 1200px;
+            z-index: 2;
+            margin-top: -460px;
+        }
+        #recommend-carousel{           
+            z-index: 1;
+        }
+        .list-group-item{
+            height: 90.5px;
+            background-color: rgba(255, 255, 255, 0);
+            border: none;      
+        }
+        .list-group-item a{
+            height: 64px;
+            line-height:64px;
+            font-size: 16px;
+            border-bottom: 2px solid;
+            color: black;
+        }
+        #menuinnerbox{
+            position: relative;
+            vertical-align:top;
+            display: none;
+            /* display: inline-block; */
+            /* float: left; */
+            height: 460px;
+            width: 110%;
+            margin-left: -5px;
+            padding-left: 0px;
+            z-index: 3;
+            background-color: rgb(255, 255, 255);
+        }
+        #menuinnerbox .panel-body{
+            height: 458px;
+            
+            padding-left: 20px;
+        }
+        #menuinnerbox .panel{
+            display: none;
+        }
+        #menubar{
+            position: relative;
+            z-index: 3;
+            display:inline-block; 
+            white-space:nowrap;
+        }
+        .path-carousel{
+            box-shadow: 0 6px 5px #cccccc;
+            width: 1200px;
+            background-color: #ffffff ;
+        }
+        .path-carousel a{
+            width: 236px;
+            height: 120px;
+            border: 0px;
+            background-position: 0 0;
+            
+        }
+        .path-carousel a{
+            transition: width  0.8s; */
+            -webkit-transition: width 0.8s; */
+        }
+        .path-carousel a:hover{
+            
+            width: 250px;  
+        }
+
+        .thumbnail {
+            position: relative;
+            padding: 0px;
+            margin-bottom: 10px;
+            background-color: rgb(255, 255, 255);
+        }
+        .thumbnail img{
+            position: relative;
+            z-index: 1; 
+            /* transition: margin-top  0.8s; */ */
+            /* -webkit-transition: margin-top 0.8s; */ */
+        }
+        .thumbnail img:hover{         
+            /* margin-top: -10px;   */
+        }
+        .index-card{
+            display: inline-block;
+            width: 1200px;
+            height: 250px;
+        }
+        .index-card .panel-heading{
+            height: 48px;
+        }
+        .index-card .panel{
+            height: 224px;
+            width: 228px;
+            vertical-align: top;
+            /* border: solid; */
+            border-right: 0px;
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 5px 5px #cccccc;
+            transition: box-shadow,margin-top,height 0.7s,0.5s,0.5s; */
+            -webkit-transition: box-shadow,margin-top,height 0.7s,0.5s,0.5s; */
+        }
+        .index-card .panel:hover{
+            box-shadow: 0 12px 20px #bfbfbf;
+            margin-top: -5px;
+            height: 230px;
+        }
+        .index-card .panel-body{
+            height: 135px;
+            /* border: solid; */
+        }
+        .index-card .course-card-bottom{
+            padding: 15px;
+            padding-top: 0px;
+
+        }
+        .index-card a{
+            text-decoration-line: none;
+            color: #000000;
+        }
+        .index-card .panel-content{
+            background-color: #ffffff;
+        }
+        .course-type1 .panel-heading{
+        background: -webkit-linear-gradient(left, rgba(250, 108, 155, 0.95), rgba(250,137,250,0.7)); /* Safari 5.1 - 6.0 */
+        background: linear-gradient(to right, rgba(250, 108, 155, 0.95), rgba(250,137,250,0.7));
+        }
+        .course-type2 .panel-heading{ /* Safari 5.1 - 6.0 */
+        background: -webkit-linear-gradient(left, rgba(160, 180, 250, 0.95), rgba(247,161,244,0.7));
+        background: linear-gradient(to right, rgba(160, 180, 250, 0.95), rgba(247,161,244,0.7));
+        }
+        .course-type3 .panel-heading{
+        background: -webkit-linear-gradient(left, rgba(48,186, 53, 0.95), rgba(72,224,140,0.7)); /* Safari 5.1 - 6.0 */
+        background: linear-gradient(to right, rgba(48,186, 53, 0.95),5 rgba(72,224,140,0.7));
+        }
+        .course-type4 .panel-heading{
+        background: -webkit-linear-gradient(left, rgba(255,183, 0, 0.95), rgba(225,223,82,0.7)); /* Safari 5.1 - 6.0 */
+        background: linear-gradient(to right, rgba(255,183, 0, 0.95), rgba(225,223,82,0.7));
+        }
+        .course-type5 .panel-heading{
+        background: -webkit-linear-gradient(left, rgba(6,250, 140, 0.95), rgba(111,167,216,0.7)); Safari 5.1 - 6.0
+        background: linear-gradient(to right, rgba(6,250, 140, 0.95), rgba(6,250, 140, 0.7));
+        }
+        .course-card-prise{
+            color: gold;
+        }
+        .lecture-index-card {
+            /* background-image: url('./images/videobg/cover034_s.jpg'); */
+            margin-bottom: 150px;
+            margin-top: 25px;
+            width: 1200px;
+            height: 360px;
+        }
+        .prime-lecturer .panel-body{
+            padding: 23px;
+        }
+        .prime-lecturer .panel{
+            display: inline-block;
+            vertical-align: top;
+            width: 275px;
+            height: 350px;
+            box-shadow: 0 5px 5px #cccccc;
+            transition: box-shadow,margin-top,height 0.7s,0.5s,0.5s; 
+            -webkit-transition: box-shadow,margin-top,height 0.7s,0.5s,0.5s; 
+        }
+        .prime-lecturer .panel:hover{
+            box-shadow: 0 12px 20px #bfbfbf;
+            margin-top: -5px;
+            /* height: 230px; */
+        }
+        .lecture-intro{
+            text-align: center;
+            height: 100px; 
+            line-height: 25px;
+        }
+        .footer{
+            /* position: absolute; */
+            height: 180px;
+            bottom: 0px;
+            background-color: #ffffff;
+        }
+        .footer .link{
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px #bfbfbf solid;
+        }
+        .footer a{
+            padding: 10px;
+            text-decoration-line: none;
+        }
+        .modal-dialog{
+            margin-top: 30%;
+            width: 35%;
+            height: 300px;
+            min-width: 398px;
+        }
+        .modal .modal-content{
+            padding:20px;
+        }
+        #login-signup-page{
+            padding-top: 35px;
+        }
+        #ls-tab{
+            border-bottom: 1px solid #66ccff;
+        }
+        #ls-tab a{ 
+            width: 100px;
+            height: 50px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 15px;
+        }
+        #purchase-vip-modal ul{
+            margin-top: 10px;
+            padding: 0px;
+            margin-bottom: 20px;
+        }
+        #purchase-vip-modal ul li{
+            /* list-style-type:none;  */
+            width: 100px;
+            display: inline-block;
+            margin-right: 60px;
+            margin-bottom: 15px;
+            /* margin-top: 10px; */
+        }
+        #avatar-btn img{
+            position: relative;
+            width: 45px;
+            z-index: 6;
+        }
+        .user-card-inner{
+            position: relative; 
+            padding-top: 50px; 
+            left: 30px;
+            margin-left: -115px; 
+            width:230px; 
+            z-index: 5; 
+            background-color: white;
+            box-shadow: 0 5px 5px #cccccc;
+            /* display:none; */
+        }
+        .user-history-inner{
+            position: relative;
+            left: 30px;
+            margin-left: -180px; 
+            width:360px;
+            z-index: 4; 
+            background-color: white;
+            box-shadow: 0 5px 5px #cccccc;
+        }
+        .prime-recommend{
+            margin-top: 25px;
+        }
+        .free-recommend{
+            margin-top: 25px;
+        } 
+        .recommend-class{
+            margin-top: -350px;
+        }
+        .lecture-class{
+            margin-top: 30px;
+        }
+        #menuContent .nav-pills > li > a{
+            color: white;
+            border-radius: 0;
+        }
+        #menuContent .nav-pills > li.active > a{
+            color: #fff;
+            background-color: rgba(7, 17, 27, 0.3);
+            border-radius: 0;
+        }
+        .nav-pills > li.active > a:hover,
+        #menuContent .nav-pills > li.active > a:focus {
+            color: #fff;
+            background-color: rgba(7, 17, 27, 0.3);
+        }
+        #menuContent .list-group-item.active{
+            background-color: rgba(7, 17, 27, 0.3);
+        }
+    </style>
+    <script>
+            (function($){
+            $.fn.hoverDelay = function(options){
+            var defaults = {
+            hoverDuring: 200,
+            outDuring: 200,
+            hoverEvent: function(){
+            $.noop();
+            },
+            outEvent: function(){
+            $.noop();
+            }
+            };
+            var sets = $.extend(defaults,options || {});
+            var hoverTimer, outTimer;
+            return $(this).each(function(){
+            $(this).hover(function(){
+            clearTimeout(outTimer);
+            hoverTimer = setTimeout(sets.hoverEvent, sets.hoverDuring);
+            },function(){
+            clearTimeout(hoverTimer);
+            outTimer = setTimeout(sets.outEvent, sets.outDuring);
+            });
+            });
+            }
+            })(jQuery);  
+        $(function(){  
+            $(".list-group li").mouseenter(function(){
+                $(".list-group li").removeClass("active");
+                $(this).addClass("active");
+            });
+            $(".list-group li").mouseleave(function(){
+                $(".list-group li").removeClass("active");
+            });
+            $("#recommend-carousel").carousel({
+                interval : 3000,
+                pause : 'hover',
+            });
+            $("#menu1,#menuinnerbox1").hover(
+                function(){
+                $("#menuinnerbox").css("display","inline-block");
+                $("#menuinnerbox1").show();
+                },
+                function(){
+                $("#menuinnerbox").hide();
+                $("#menuinnerbox1").hide();
+                }
+            );
+            $("#menu2,#menuinnerbox2").hover(
+                function(){
+                $("#menuinnerbox").css("display","inline-block");
+                $("#menuinnerbox2").show();
+                },
+                function(){
+                $("#menuinnerbox").hide();
+                $("#menuinnerbox2").hide();
+                }
+            );
+            $("#menu3,#menuinnerbox3").hover(
+                function(){
+                $("#menuinnerbox").css("display","inline-block");
+                $("#menuinnerbox3").show();
+                },
+                function(){
+                $("#menuinnerbox").hide();
+                $("#menuinnerbox3").hide();
+                }
+            );
+            $("#menu4,#menuinnerbox4").hover(
+                function(){
+                $("#menuinnerbox").css("display","inline-block");
+                $("#menuinnerbox4").show();
+                },
+                function(){
+                $("#menuinnerbox").hide();
+                $("#menuinnerbox4").hide();
+                }
+            );
+            $("#menu5,#menuinnerbox5").hover(
+                function(){
+                $("#menuinnerbox").css("display","inline-block");
+                $("#menuinnerbox5").show();
+                },
+                function(){
+                $("#menuinnerbox").hide();
+                $("#menuinnerbox5").hide();
+                }
+            );
+            $("#login-modal").click(function(){
+                $("#ls-tab a:first").tab("show");
+            });
+             $("#signup-modal").click(function(){
+                $("#ls-tab a:last").tab("show");
+            });
+            $("#login-signup-modal,#purchase-vip-modal").on('show.bs.modal',function(){  
+                $("#main").css("-webkit-filter","blur(5px)");
+                $("#navigation").css("-webkit-filter","blur(5px)");
+            });
+            $("#login-signup-modal,#purchase-vip-modal").on('hide.bs.modal',function(){  
+                $("#main").css("-webkit-filter","none");
+                $("#navigation").css("-webkit-filter","none");
+            });
+            $("#avatar-btn").hoverDelay({
+                hoverEvent: function(){
+                    $(".user-card-inner").slideDown();
+                    $("#user-avatar").animate({
+                        top:'20px',
+                        width: '80px',
+                        right: '15px'     
+                    },200);
+                },
+                outEvent: function(){
+                    if(!$(".user-card-inner:hover").length){
+                        $(".user-card-inner").slideUp();
+                        $("#user-avatar").animate({
+                            top:'0px',
+                            width: '45px',
+                            right: '0px'     
+                        },200);
+                    }
+                }
+            });
+            $(".user-card-inner,#user-avatar").hoverDelay({
+               outEvent: function(){ 
+                $(".user-card-inner").slideUp();
+                $("#user-avatar").animate({
+                    top:'0px',
+                    width: '45px',
+                    right: '0px'
+                    },200);
+                }    
+            });
+            $("#history-btn").hoverDelay({
+                hoverEvent: function(){
+                    $(".user-history-inner").slideDown();
+                },
+                outEvent:function(){
+                    if(!$(".user-history-inner:hover").length){
+                        $(".user-history-inner").slideUp();
+                    }
+                }
+            });
+            $(".user-history-inner").hoverDelay({
+                outEvent: function(){
+                    $(".user-history-inner").slideUp();
+                }
+            });                                   
+        });
+    </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse" role="navigation" id="navigation">
+            <div class="mask-container" style="overflow: hidden;">
+                <div id="navbar-mask">
+                </div>
+            </div>
+            <div class="container" id="navbar-conatiner">
+            <div class="">
+                <div class="row col-xl-12" id="navbar-top">
+                    <div>
+                        <div class="navbar-header">
+                        <img src="./images/logo.png" alt="" style="width: 55px;float: left;padding-top: 3px;margin-right: 10px;">
+                            <a href="#" class="navbar-brand" id="title">
+                                <p style="min-width:100px;font-family: myFirstFont;">近平课程网</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="nav navbar-nav navbar-left hidden-xs">
+                        <ul class="nav navbar-nav nav-pills custom-ul">
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">课程</a></li>
+                            <li class="dorpdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >职业学院 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav navbar navbar-right hidden-sm hidden-xs login-none" style="display:none;">
+                        <ul class="nav navbar-nav nav-pills custom-ul">
+                            <li style="padding-top: 5px;display:list-item;">
+                                <form action="" class="navbar-form input-group">
+                                    <div class="form-group form-group-sm">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default btn-sm search-btn" id="search-btn1"><span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </li>               
+                            <li style="display:list-item;"><a href="#" data-toggle="modal" data-target="#purchase-vip-modal" style="color: gold;">VIP</a></li>
+                            <li style="display:list-item;"><a href="#" data-toggle="modal" data-target="#login-signup-modal" id="login-modal">登陆</a></li>
+                            <li style="display:list-item;"><a href="#" data-toggle="modal" data-target="#login-signup-modal" id="signup-modal">注册</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav navbar navbar-right hidden-sm hidden-xs login-ready" >
+                        <ul class="nav navbar-nav nav-pills nav-menu">
+                            <li style="padding-top: 5px; display:list-item;">
+                                <form action="" class="navbar-form input-group ">
+                                    <div class="form-group form-group-sm">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default btn-sm search-btn" id="search-btn2"><span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </li>
+                            <li class="user-card" style="display:list-item; width: 60px; height: 60px;">
+                                    <a href="#" style="padding: 5px;line-height: 30px; height: 60px;" id="avatar-btn">
+                                        <img class="img-circle" src="./images/avatar/wrt.jpg" alt="" id="user-avatar">
+                                    </a>
+                                    <div class="user-card-inner" style="display:none;" >
+                                            <div class="user-name" style="">
+                                                 <p><h4 style="text-align: center;">王日天</h4></p>
+                                            </div>
+                                            <div class="user-info" style="padding:15px;">
+                                                <div class="user-status" style="border-bottom: 1px solid #e5e9ef;">
+                                                    <p style="text-align:center;">身份:会员</p>
+                                                </div>
+                                                <div>
+                                                    <ul style="padding: 30px; padding-bottom: 0px;">
+                                                        <li style="margin-bottom: 20px; display: list-item; list-style-type:none; text-align: center;"><a href="#"><span style="height: 28px;font-size:15px;" class="glyphicon glyphicon-user">个人信息</span></a></li>
+                                                        <li style="display: list-item; list-style-type:none; text-align: center;"><a href="#"><span style="height: 28px;
+                                                        font-size:15px;" class="glyphicon glyphicon-bookmark">我的课程</a></li>
+                                                    </ul>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="user-card-bottom" style="height: 30px; text-align:right; background-color:#f4f5f7">
+                                                <a href="#" style="line-height:30px; margin-right:5px;" id="logout-btn">退出</a>
+                                            </div>
+                                    </div>
+                            </li>
+                            <li style="display:list-item;"><a href="#" data-toggle="modal" data-target="#purchase-vip-modal" style="color: gold; height: 60px;line-height: 25px;">VIP</a></li>
+                            <li style="display:list-item;">
+                                <a href="#" style="font-size: 20px; line-height: 30px; height: 60px;"> 
+                                <span class="glyphicon glyphicon-bell"></span>
+                                </a>
+                            </li>
+                            <li class="user-history" style="display:list-item; width: 60px; height: 60px;">
+                                <a href="#" style="height: 60px; line-height: 25px;" id="history-btn">
+                                历史
+                                </a>
+                                <div class="user-history-inner" style="display: none;">
+                                    <div class="user-histoty-top" style="padding: 15px; padding-right: 0px; padding-bottom: 5px;">
+                                        <p>历史记录————————————————————</p>
+                                    </div>
+                                    <div class="user-history-list" style="padding: 15px;">
+                                        <ul style="padding-left: 20px;">
+                                            <li><a href="#"><div class="history-info"><p style="display: inline-block; width: 250px;">番号：KRAY-0080</p><p style="display: inline-block; float: right;">17.1.1</p></div></a></li>
+                                            <li><a href="#"><div class="history-info"><p style="display: inline-block; width: 250px;">番号：MDTM-248</p><p style="display: inline-block; float: right;">17.1.1</p></div></a> </li>
+                                            <li><a href="#"><div class="history-info"><p style="display: inline-block; width: 250px;">番号：IPZ-956</p><p style="display: inline-block; float: right;">17.1.1</p></div></a></li>
+                                            <li><a href="#"><div class="history-info"><p style="display: inline-block; width: 250px;">番号：DVAJ-234</p><p style="display: inline-block; float: right;">17.1.1</p></div></a></li>
+                                            <li><a href="#"><div class="history-info"><p style="display: inline-block; width: 220px;">番号：ABP-597</p><p style="display: inline-block; float: right;">17.1.1</p></div></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+        <div id="main">
+            <div class="home-recommend-container" id="home-recommend-all" > 
+                <div class="container">
+
+                    <div class="" id="menubar">
+                        <div class="" id="menuContent">
+                            <ul class="nav nav-pills nav-stacked list-group">
+                                <li class="list-group-item" id="menu1" style="margin-top: 5px;"><a href="#">233 <span style="float:right; margin-top: 20px;" class="glyphicon glyphicon-chevron-right"></a></li>
+                                <li class="list-group-item" id="menu2"><a href="#">233 <span style="float:right; margin-top: 20px;" class="glyphicon glyphicon-chevron-right"></a></li>
+                                <li class="list-group-item" id="menu3"><a href="#">233 <span style="float:right; margin-top: 20px;" class="glyphicon glyphicon-chevron-right"></a></li>
+                                <li class="list-group-item" id="menu4"><a href="#">233 <span style="float:right; margin-top: 20px;" class="glyphicon glyphicon-chevron-right"></a></li></span>
+                                <li class="list-group-item" id="menu5" style="height: 85.5px;"><a href="#">233 <span style="float:right; margin-top: 20px;" class="glyphicon glyphicon-chevron-right"></a></li>
+                            </ul>
+                        </div>
+                        <div class="mask" id="menumask" >
+                        </div>
+                        <div class="menu-inner-box " id="menuinnerbox">
+                            <div class="panel panel-default" id="menuinnerbox1" style="background-image: url(./images/Bg1.png);background-size:cover;">
+                                <div class="panel-body">
+                                    <div class="title-recommend">
+                                        <h4>分类项目</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">基础：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        <li><a href="#">JQuery</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">进阶：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML5</a></li>
+                                        <li><a href="#">CSS3</a></li>
+                                        <li><a href="#">Nodejs</a></li>
+                                        <li><a href="#">Bootstrap</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">其他：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端工具</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <h4>课程推荐</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h3><span class="label label-default">课程：</span></h3>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端开发《从入门到滚啊》</a></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" id="menuinnerbox2" style="background-image: url(./images/Bg2.png);">
+                                <div class="panel-body">
+                                    <div class="title-recommend">
+                                        <h4>分类项目</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">基础：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        <li><a href="#">JQuery</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">进阶：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML5</a></li>
+                                        <li><a href="#">CSS3</a></li>
+                                        <li><a href="#">Nodejs</a></li>
+                                        <li><a href="#">Bootstrap</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">其他：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端工具</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <h4>课程推荐</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h3><span class="label label-default">课程：</span></h3>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端开发《从入门到滚啊》</a></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" id="menuinnerbox3" style="background-image: url(./images/Bg3.png);">
+                                <div class="panel-body">
+                                    <div class="title-recommend">
+                                        <h4>分类项目</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">基础：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        <li><a href="#">JQuery</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">进阶：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML5</a></li>
+                                        <li><a href="#">CSS3</a></li>
+                                        <li><a href="#">Nodejs</a></li>
+                                        <li><a href="#">Bootstrap</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">其他：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端工具</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <h4>课程推荐</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h3><span class="label label-default">课程：</span></h3>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端开发《从入门到滚啊》</a></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" id="menuinnerbox4" style="background-image: url(./images/Bg4.png);">
+                                <div class="panel-body">
+                                    <div class="title-recommend">
+                                        <h4>分类项目</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">基础：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        <li><a href="#">JQuery</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">进阶：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML5</a></li>
+                                        <li><a href="#">CSS3</a></li>
+                                        <li><a href="#">Nodejs</a></li>
+                                        <li><a href="#">Bootstrap</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">其他：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端工具</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <h4>课程推荐</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h3><span class="label label-default">课程：</span></h3>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端开发《从入门到滚啊》</a></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" id="menuinnerbox5" style="background-image: url(./images/Bg5.png);">
+                                <div class="panel-body">
+                                    <div class="title-recommend">
+                                        <h4>分类项目</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">基础：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        <li><a href="#">JQuery</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">进阶：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">HTML5</a></li>
+                                        <li><a href="#">CSS3</a></li>
+                                        <li><a href="#">Nodejs</a></li>
+                                        <li><a href="#">Bootstrap</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h4><span class="label label-default">其他：</span></h4>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端工具</a></li>
+                                        </ol>
+                                    </div>
+                                    <div class="">
+                                        <h4>课程推荐</h4>
+                                    </div>
+                                    <div class="">
+                                        <div class="small-title" style="display: inline-block;">
+                                            <h3><span class="label label-default">课程：</span></h3>
+                                        </div>
+                                        <ol class="breadcrumb" style="display: inline-block;">
+                                        <li><a href="#">前端开发《从入门到滚啊》</a></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>               
+                    <div id="home-recommend-carousel">
+                        <div class="carousel slide" id="recommend-carousel">
+                            <ol class="carousel-indicators" style="margin-left: auto;">
+                                <li data-target="#recommend-carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#recommend-carousel" data-slide-to="1" ></li>
+                                <li data-target="#recommend-carousel" data-slide-to="2" ></li>
+                            </ol>
+                            <div class="carousel-inner" id="slide-con">
+                                <div class="item active">
+                                    <a targrt="-self" href="#">
+                                        <div class="color" style="background-color: rgb(38,97,157);">
+                                            <img src="./images/slide0.jpg" alt="First slide" id="image-slide">
+                                        </div>
+                                    </a>
+                                    <div class="carousel-caption"></div>
+                                </div>
+                                <div class="item">
+                                    <a targrt="-self" href="#">
+                                        <div class="color" style="background-color: rgb(235,235,235);"> 
+                                            <img src="./images/slide1.jpg" alt="Second slide" id="image-slide">
+                                        </div>
+                                    </a>
+                                    <div class="carousel-caption"></div>
+                                </div>
+                                <div class="item">
+                                    <a targrt="-self" href="#">
+                                        <div class="color" style="background-color: rgb(233,234,254);">
+                                            <img src="./images/slide2.jpg" alt="Third slide" id="image-slide">
+                                        </div>
+                                    </a>
+                                    <div class="carousel-caption"></div>
+                                </div>
+
+                            </div>
+                           <a href="#recommend-carousel" class="carousel-control left" data-slide="prev">
+                               <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">&lsaquo;</span>
+                           </a> 
+                           <a href="#recommend-carousel" class="carousel-control right" data-slide="next">
+                              <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">&rsaquo;</span>
+                           </a> 
+                        </div>              
+                    </div>
+                    <div class="path-carousel" style="display: inline-block; white-space:nowrap;">
+                        <div class="">
+                        </div>
+                        <div style="overflow: hidden;">
+                            <a href="#" class="thumbnail" style="display: inline-block;" id="hoversss">
+                                <img src="./images/recommend/Path_1.png" alt="">
+                            </a>
+                            <a href="#" class="thumbnail" style="display: inline-block;">
+                                <img src="./images/recommend/Path_2.png" alt="">
+                            </a>
+                            <a href="#" class="thumbnail" style="display: inline-block;">
+                                <img src="./images/recommend/Path_3.png" alt="">
+                            </a>
+                            <a href="#" class="thumbnail" style="display: inline-block;">
+                                <img src="./images/recommend/Path_4.png" alt="">
+                            </a>
+                            <a href="#" class="thumbnail" style="display: inline-block;">
+                                <img src="./images/recommend/Path_5.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container recommend-class">
+                <div class="prime-recommend">
+                    <h3>近平推荐 
+                            <a href="#" style="float: right; font-size: 15px;text-decoration-line: none;">更多：</a>
+                    </h3>
+                    <div class="index-card">
+                        <div class="panel course-type1" style="background-image: url('./images/videobg/cover001_s.jpg');background-repeat: no-repeat;">
+                            <a href="#">
+                                <div class="panel-heading" id="course-type1">
+                                    <h4 class="panel-title" style="line-height: 28px;text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>JS实现京东无延迟菜单效果</h4>
+                                        <p>JS实现京东无延迟菜单效果</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">VIP</div>
+                                    </div>  
+                                </div>
+                            </a> 
+                        </div>                    
+                        <div class="panel course-type2" style="background-image: url('./images/videobg/cover010_s.jpg'); background-repeat: no-repeat;">
+                            <a href="">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="line-height: 28px;text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>自定义实现日历控件</h4>
+                                        <p>轻松掌握Android 自定义控件实现</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">VIP</div>
+                                    </div> 
+                                </div>  
+                            </a>
+                        </div>
+                        <div class="panel course-type3" style="background-image: url('./images/videobg/cover014_s.jpg'); background-repeat: no-repeat;">
+                            <a href="">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="line-height: 28px;text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>bootstrap快速入门</h4>
+                                        <p>bootstrap是目前最流行的框架之一，能够带你快速搭建网页！</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">VIP</div>
+                                    </div>
+                                </div>
+                            </a>   
+                        </div>
+                        <div class="panel course-type4" style="background-image: url('./images/videobg/cover012_s.jpg'); background-repeat: no-repeat;">
+                            <a href="">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="line-height: 28px; text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>bootstrap快速入门</h4>
+                                        <p>bootstrap是目前最流行的框架之一，能够带你快速搭建网页！</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">VIP</div>
+                                    </div>   
+                                </div>
+                            </a>
+                        </div>
+                        <div class="panel course-type5" style="margin-right: 0px;background-image: url('./images/videobg/cover013_s.jpg'); background-repeat: no-repeat;">
+                            <a href="">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="line-height: 28px;text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>bootstrap快速入门</h4>
+                                        <p>bootstrap是目前最流行的框架之一，能够带你快速搭建网页！</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">VIP</div>
+                                    </div>   
+                                </div>
+                            </a>
+                        </div>                  
+                    </div>
+                </div>
+                <div class="free-recommend">
+                    <h3>免费优品
+                            <a href="#" style="float: right; font-size: 15px;text-decoration-line: none;">更多：</a>
+                    </h3>
+                    <div class="index-card">
+                        <div class="panel course-type5" style="background-image: url('./images/videobg/cover001_s.jpg');background-repeat: no-repeat;">
+                            <a href="#">
+                                <div class="panel-heading" id="course-type1">
+                                    <h4 class="panel-title" style="line-height: 28px;text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>JS实现京东无延迟菜单效果</h4>
+                                        <p>JS实现京东无延迟菜单效果</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">Free</div>
+                                    </div>  
+                                </div>
+                            </a> 
+                        </div>                    
+                        <div class="panel course-type4" style="background-image: url('./images/videobg/cover010_s.jpg'); background-repeat: no-repeat;">
+                            <a href="">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="line-height: 28px;text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>自定义实现日历控件</h4>
+                                        <p>轻松掌握Android 自定义控件实现</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">Free</div>
+                                    </div> 
+                                </div>  
+                            </a>
+                        </div>
+                        <div class="panel course-type3" style="background-image: url('./images/videobg/cover014_s.jpg'); background-repeat: no-repeat;">
+                            <a href="">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="line-height: 28px;text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>bootstrap快速入门</h4>
+                                        <p>bootstrap是目前最流行的框架之一，能够带你快速搭建网页！</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">Free</div>
+                                    </div>
+                                </div>
+                            </a>   
+                        </div>
+                        <div class="panel course-type2" style="background-image: url('./images/videobg/cover012_s.jpg'); background-repeat: no-repeat;">
+                            <a href="">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="line-height: 28px; text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>bootstrap快速入门</h4>
+                                        <p>bootstrap是目前最流行的框架之一，能够带你快速搭建网页！</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">Free</div>
+                                    </div>   
+                                </div>
+                            </a>
+                        </div>
+                        <div class="panel course-type1" style="margin-right: 0px;background-image: url('./images/videobg/cover013_s.jpg'); background-repeat: no-repeat;">
+                            <a href="">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="line-height: 28px;text-align: center;">233</h4>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="panel-body">
+                                        <h4>bootstrap快速入门</h4>
+                                        <p>bootstrap是目前最流行的框架之一，能够带你快速搭建网页！</p>
+                                    </div>
+                                    <div class="course-card-bottom">
+                                        <div style="display: inline-block;" class="course-card-info">12人在学</div>
+                                        <div style="float: right; display: inline-block;" class="course-card-prise">Free</div>
+                                    </div>   
+                                </div>
+                            </a>
+                        </div>                  
+                    </div>
+                </div>    
+            </div>
+            <div class="container lecture-class">
+                <div class="prime-lecturer">
+                    <h3 >精英名师推荐
+                    <a href="#" style="float: right; font-size: 15px;text-decoration-line: none;">更多：</a>
+                    </h3>
+                    
+                    <div class="lecture-index-card">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="lecture-avatar" style="text-align: center;">
+                                    <img class="img-circle" style=" width: 135px;"  src="./images/avatar/wrt.jpg" alt="">
+                                </div>
+                                <div class="lecture-name" style="text-align: center; font-size: 20px;">
+                                    <strong><span>王日天</span></strong>
+                                </div>
+                                <div class="lecture-profession" style="text-align: center; margin-bottom:25px; ">
+                                    <span>Neet</span>
+                                </div>
+                                <div class="lecture-intro">
+                                    <span>
+                                        ASS WE CAN！
+                                        rua!
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel" style="margin-left: 181px;">
+                            <div class="panel-body" >
+                                <div class="lecture-avatar" style="text-align: center;">
+                                    <img class="img-circle" style=" width: 135px;"  src="./images/avatar/error.jpg" alt="">
+                                </div>
+                                <div class="lecture-name" style="text-align: center; font-size: 20px;">
+                                    <strong><span>???</span></strong>
+                                </div>
+                                <div class="lecture-profession" style="text-align: center; margin-bottom:25px; ">
+                                    <span>???</span>
+                                </div>
+                                <div class="lecture-intro">
+                                    <span>
+                                        ???
+                                        
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel" style="float: right;">
+                            <div class="panel-body">
+                                <div class="lecture-avatar" style="text-align: center;">
+                                    <img class="img-circle" style=" width: 135px;"  src="./images/avatar/error.jpg" alt="">
+                                </div>
+                                <div class="lecture-name" style="text-align: center; font-size: 20px;">
+                                    <strong><span>????</span></strong>
+                                </div>
+                                <div class="lecture-profession" style="text-align: center; margin-bottom:25px; ">
+                                    <span>???</span>
+                                </div>
+                                <div class="lecture-intro">
+                                    <span>
+                                        ???
+                                        
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <div class="footer-sns" style="text-align: center;padding-top: 25px;">
+                    <a href="#">
+                        <img src="./images/alipay.jpg" alt="" style="height:32px;">
+                    </a>
+                    <a href="#">
+                        <img src="./images/wechat.jpg" alt="" style="height:28px;">
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="#">联系我们</a>
+                    <a href="#">关于我们</a>
+                    <a href="#">意见反馈</a>
+                </div>
+                <div class="regist-info" style="text-align: center;padding: 10px;">
+                    <p>©2017 Wangritian 沪IPC备 233号</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-popup">
+            <div class="container modal fade" id="purchase-vip-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h4 class="modal-title" id="">
+                                我的VIP
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="no-vip" >
+                                <div class="alert alert-warning">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <span>你尚开通VIP服务！</span>
+                                </div>
+                            
+                                <div>
+                                    <p style="padding-top: 10px;padding-bottom: 15px;">会员特权——————————————————</p>
+                                </div>
+                                <ul> 
+                                    <li><span class="glyphicon glyphicon-expand"></span><span>享受全部内容</span></li>
+                                    <li><span class="glyphicon glyphicon-hd-video"></span><span>高清体验</span></li>
+                                    <li><span class="glyphicon glyphicon-ban-circle"></span><span>免广告</span></li>
+                                    <li><span class="glyphicon glyphicon-tower"></span><span>名师指导</span></li>
+                                </ul>
+                                <span><h5>仅需￥450/月</h5></span>
+                                <div>
+                                    <button type="submit" class="btn btn-lg" style="background-color: gold; width: 100%;">开通会员</button>
+                                </div>
+                            </div>
+                            <div class="in-vip" style="display: none;">
+                                <div class="alert alert-warning alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <span>你已开通VIP服务！</span>
+                                </div>
+                                <span>VIP状态: 激活</span>
+                                <span style="float: right;">剩余天数：12天</span>
+
+                                <div class="progress progress-striped" style="margin-top: 20px">
+                                    <div class="progress-bar progress-bar-success" role="progressbar"
+                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 40%;">
+                                        <span class="sr-only">VIP状态</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-lg" style="background-color: gold; width: 100%;">续命</button>
+                                </div>
+                            </div>
+                            <!-- <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    确认
+                                </button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>    
+
+            <div class="container modal fade" id="login-signup-modal" data-backdrop='static'>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="">
+                            <ul class="nav nav-tabs" id="ls-tab">
+                                <li class="active"><a href="#login" data-toggle="tab">登陆</a></li>
+                                <li><a href="#signup" data-toggle="tab">注册</a></li>
+                                <button type="button" class="close" data-dismiss="modal">x</button>
+                            </ul>
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="tab-content" id="login-signup-page">
+                                <div class="tab-pane fade in active" id="login">
+                                    <div class="">
+                                        <form action="" class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control " id="account" placeholder="请输入账号" style="height: 40px;"> 
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control" id="inputPassword" placeholder="请输入密码" style="height: 40px;">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-8">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox">记住我
+                                                        </label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-4 " style="text-align: right;">
+                                                    <a style="line-height: 35px;" href="#">忘记密码</a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-lg btn-primary" style="width: 100%;" id="login-btn">登录</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="signup">
+                                    <div class="register">
+                                        <form action="" class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control " id="account" placeholder="请输入账号" style="height: 40px;">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control" id="inputPassword" placeholder="请输入密码" style="height: 40px;">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control" id="inputPassword" placeholder="请再次确认密码" style="height: 40px;"  >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-lg btn-danger" style="width: 100%; margin-top: 15px;">注册</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="registr-success"  style="display:none; style="display:none;>
+                                        <form action="" class="form-horizontal">
+                                            <div class="alert alert-success" style="text-align: center;" >注册成功！</div>                                
+                                            <div class="form-group">                                       
+                                                <div class="col-md-12">
+                                                    <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal" style="width: 100%;">确定</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="registr-fault"  style="display:none;>
+                                        <form action="" class="form-horizontal">
+                                            <div class="alert alert-danger" style="text-align: center;" >注册错误！</div>                                  
+                                            <div class="form-group">                                       
+                                                <div class="col-md-12">
+                                                    <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal" style="width: 100%;">返回</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

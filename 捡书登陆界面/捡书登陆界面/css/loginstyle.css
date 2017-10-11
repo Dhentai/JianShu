@@ -1,0 +1,295 @@
+@charset "utf-8";
+.logo{
+	position: absolute;
+	top: 34px;
+	margin-left: 60px;
+	width: 100px;
+}
+.sign{
+	height: 100%;
+	min-height: 750px;
+	text-align: center;
+	font-size: 14px;
+	background-color:#f1f1f1 ;
+}
+
+.sign .reset-title .active, .sign .title .active{
+	font-weight:700;
+	color:#ea6f5a;
+	border-bottom: 2px solid #ea6f5a;
+}
+
+.sign .reset-title a, .sign .title a{
+	padding:10px;
+	color:#969696;
+}
+
+.sign form .restyle{
+	margin-bottom:0;
+}
+
+.sign form .input-prepend{
+	position:relative;
+	width:100%;
+	margin-bottom:0px;
+
+}
+
+.sign .reset-title, .sign .title{
+	margin: 0 auto 50px;
+    padding: 10px;
+    font-weight: 400;
+    color: #969696;
+}
+
+.sign form .input-prepend i{
+	position: absolute;
+	top: 14px;
+	left: 10px;
+	font-size: 18px;
+	color: #969696;
+}
+
+.sign form .restyle input{
+	border-bottom:none;
+	border-radius:4px 4px 0 0;
+}
+
+.sign form .input-prepend input{
+	width:100%;
+	height:50px;
+	margin-bottom:0;
+	padding:8px 15px 3px 38px;
+	border:1px solid #c8c8c8;
+	background-color:hsla(0,0%,71%,.1);
+	vertical-align:middle;
+	
+}
+
+
+.main{
+	width: 400px;
+	margin: 85px auto 0;
+	padding: 50px 50px 30px;
+	background-color:#fff;
+	border-radius: 4px;
+	box-shadow: 0 0 8px rgba(0,0,0,.1);
+	vertical-align:middle;
+	display:inline-block;
+	box-sizing:border-box;
+}
+
+
+
+input {
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+ textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 13.3333px Arial;
+}
+
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+
+a {
+	text-decoration: none;
+	background-color: transparent;
+}
+
+.h4,h4{
+	font-size: 18px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+	line-height: 1.1;
+}
+
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+
+
+.iconfont{
+	font-family: iconfont!important;
+	font-size:inherit;
+	font-style: normal;
+	font-weight: 400!important;
+	-webkit-font-smoothing:antialiased;
+}
+
+.ic-user:before{
+	content:"\E65E";
+}
+
+body.reader-black-font, body.reader-black-font .history-mode .view-area, body.reader-black-font .history-mode .view-area pre, body.reader-black-font .main .kalamu-area, body.reader-black-font .main .markdown .text, body.reader-black-font input, body.reader-black-font select, body.reader-black-font textarea{
+	font-family:-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+}
+
+body.no-padding{
+	padding:0!important;
+}
+body,html{
+	height: 100%;
+}
+body{
+	line-height: 1.42857;
+	color: #333;
+	margin: 0;
+}
+*, :after, :before{
+	box-sizing:border-box;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+
+.iconfont{
+	font-family:iconfont!important;
+	font-style:normal;
+	font-weight:400!important;
+	-webkit-font-smoothing:antialiased;
+}
+
+.sign .remember-btn{
+	float: left;
+	margin: 16px 0;
+}
+
+.sign .forget-btn{
+	float:right;
+	position:relative;
+	margin:-3px 0;
+	font-size:14px;
+}
+
+.sign .forget-btn a{
+	color:#999;
+}
+
+.sign .forget-btn {
+	top: 20px;
+	left:auto;
+	right: 0;
+	border-radius: 4px;
+}
+
+.open>.dropdown-menu{
+	display: block;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+.sign .sign-in-button, .sign .sign-up-button{
+	width:100%;
+	padding:9px 18px;
+	font-size:18px;
+	border:none;
+	border-radius:25px;
+	color:#fff;
+	cursor:pointer;
+	outline:none;
+	display:block;
+	clear:both;
+}
+
+.sign .sign-in-button{
+	background:#3194d0;	
+}
+
+h6{
+	position:relative;
+	margin:30px 0px 20px;
+	font-size:12px;
+	color:#b5b5b5;
+}
+
+h6:before{
+	content:"";
+	right:210px;
+	border-top:1px solid #b5b5b5;
+	display:block;
+	position:absolute;
+	width:60px;
+	top:5px;
+}
+
+h6:after{
+	content:"";
+	left:210px;
+	border-top:1px solid #b5b5b5;
+	display:block;
+	position:absolute;
+	width:60px;
+	top:5px;
+}
+
+.sign .more-sign ul li{
+	margin:0 5px;
+	display:inline-block;
+}
+.sign .more-sign .weibo{
+	background-color:#e05244;
+	margin-left:-45px;
+}
+
+.sign .more-sign .weixin{
+	background-color: #00bb29;
+}
+
+.sign .more-sign .qq{
+	background-color: #498ad5;
+}
+
+.sign .more-sign ul a{
+	width:50px;
+	height:50px;
+	background-color:hsla(0,0%,71%,.2);
+	border-radius:50%;
+	line-height:50px;
+	display:block;
+}
+
+.sign .more-sign .iconfont{
+	color:#fff;
+}
+.sign .more-sign ul i{
+	font-size:24px;
+}

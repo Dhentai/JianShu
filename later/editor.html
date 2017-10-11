@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>wangEditor demo</title>
+    <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css"/>
+</head>
+<body>
+<div id="cont" style="border: 5px solid #eeeeee;"></div>
+<div>
+    <input type="text" style="height:30px; width:80%; float: left; " />
+    <button id="btn" style="width:20%; height:30px; text-align: center;float: left; " >submit</button>
+
+</div>
+
+<div id="editor">
+    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+</div>
+
+
+
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    editor.customConfig.uploadImgServer = '/janebook/multiUpload'
+    editor.customConfig.uploadFileName = 'files'
+    editor.create()
+    //初始化WH
+    setTextAreaHeight()
+    // 调整浏览器窗口大小时，也要同时调整编辑器文本区域的高度
+    $(window).bind("resize", setTextAreaHeight);
+
+    // 调整编辑器内层文本区域高度的函数，计算方法是编辑器包装元素高度减工具栏高度，再减文本区域的垂直margin和padding之和
+    function setTextAreaHeight() {
+        var width = $("#editor").css("width");
+        $("#editor").height(window.innerHeight - 62);
+        console.log(window.innerWidth);
+        if(window.innerWidth>700){
+            $("#editor").css("width", "100%");
+        }else{
+            $("#editor").css("width", "700");
+        }
+    }
+
+    $("#btn").click(function(){
+       $("#cont").html(editor.txt.html());
+
+    })
+
+
+</script>
+
+</body>
+</html>

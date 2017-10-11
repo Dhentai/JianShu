@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Writng Mode</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/layui.css"/>
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./layui.js"></script>
+    <script type="text/javascript" src="./js/wangEditor.min.js"></script>
+    <script type="text/javascript" src="./js/ddsort.js"></script>
+
+</head>
+<css>
+    <style type="text/css" role="main">
+        body,html{
+            background: #3f3f3f;
+            min-width: 650px;
+        }
+        body {
+            font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+            position: relative;
+        }
+        .aside{
+            border: 1px solid;
+            padding: 0 0;
+        }
+        .middle{
+            min-width: 200px;
+            border: 1px solid;
+            padding: 0;         
+        }
+        .right{
+            min-width: 200px;
+            border: 1px solid;
+            padding: 0; 
+        }
+        .normal-mode{
+            height: 100%;
+        }
+        #editor{
+			background-color: #2f2f2f;
+        }
+        .w-e-droplist{
+            z-index: 10003;
+        }
+        .rename-notebook-modal{
+            z-index: 10005;
+        }
+        @media screen and (max-width: 1000px){
+	    	.normal-mode .input-warp{    	
+	        	top: 135px!important;  		
+    		}
+        }       
+    </style>
+    <style type="text/css" role="right">
+	    .w-e-droplist {
+		    z-index: 10006;
+		}
+		.w-e-text-container .w-e-panel-container{
+			z-index: 10006;
+		}
+    	.normal-mode .input-warp{
+			position: absolute;
+        	display: block;
+        	width: 100%;       	
+        	z-index: 10005;        	
+        	top: 95px;  		
+    	}
+        .normal-mode .input-title{
+        	display: block;
+			margin: 0 auto;
+            color: rgb(177, 177, 177);
+            background: rgb(63, 63, 63);
+            padding: 15px 30px 10px 40px;
+            margin-bottom: 0;
+            border-bottom: 1px solid #2f2f2f;
+            font-size: 30px;
+            font-weight: normal;
+            line-height: 30px;
+            overflow: hidden;
+            outline: none;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border-radius: 0;
+            border: none;
+           	width: 800px;
+        }
+        .w-e-toolbar{
+            width: 80%;
+            flex-wrap : wrap;
+        }
+        .normal-mode .editor .w-e-toolbar{
+            background-color: #2f2f2f;
+        }
+        .normal-mode .editor .w-e-text{
+            overflow-y: auto;
+        }
+        .normal-mode .editor .w-e-text p{
+            color: #c8c8c8;
+        }
+        .editor .w-e-toolbar .w-e-menu:hover{
+            background-color: #555555;
+        }
+        .editor .w-e-toolbar .w-e-menu i {
+            color: #c8c8c8;
+            font-size: 22px;
+            line-height: 30px;
+        } 
+        .editor .w-e-toolbar .w-e-menu i:hover {
+            color: #fff;
+        }
+        .right .function-tool{
+            position: absolute;
+            right: 0;
+            width: 20%;
+            background-color: #2f2f2f;
+            z-index: 10005;	
+        }
+        .right .function-tool .tool-con{
+            float: right;
+        }
+        .right .function-tool .tool-menu{
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .right .function-tool .tool-menu:hover{
+            background-color: #555555;
+        }
+        .right .function-tool .tool-menu i {
+            color: #c8c8c8;
+            font-size: 22px;
+            line-height: 30px;
+        } 
+        .right .function-tool .tool-menu i:hover{
+            color: #fff;
+        }
+		.w-e-text-container{
+        	margin: 0 auto;
+    	    padding-top: 110px;
+    	    padding-bottom: 120px;
+        }
+        .w-e-text{
+        	background-color: #3f3f3f;
+        	max-width: 800px;
+        	margin: 0 auto;
+        }        
+    </style>
+</css>
+<body class="night-mode">
+    <div class="container-fluid">
+        <div class="row normal-mode">
+            <div class="right">
+                <div class="function-tool">
+                    <div class="tool-con">
+                        <div class="tool-menu floppy-o">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="tool-menu compress">
+                            <i class="fa fa-compress" aria-hidden="true"></i>
+                        </div>
+                        <div class="tool-menu forward">
+                            <i class="fa fa-mail-forward" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="wantEditor" style="position: relative;"> 
+                    <div class="input-warp">
+                        <input class="input-title" type="text" placeholder="新建未命名文章">
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="editor" id="editor" > 
+                        <p>CNM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    editor.customConfig.uploadImgServer = '/janebook/multiUpload'
+    editor.customConfig.uploadFileName = 'files'   
+    editor.create() 
+    // editor.txt.html('lalalalal');
+    //初始化WH
+    setTextAreaHeight()
+    // 调整浏览器窗口大小时，也要同时调整编辑器文本区域的高度
+    $(window).bind("resize", setTextAreaHeight);
+    // 调整编辑器内层文本区域高度的函数，计算方法是编辑器包装元素高度减工具栏高度，再减文本区域的垂直margin和padding之和
+    function setTextAreaHeight() {
+        var width = window.innerHeight;
+        $(".right").height(width);
+        $('.w-e-text-container').height(width-270);
+    };
+    $(window).keydown(function(e){
+    	if( e.which == 27){
+    		window.location.href="./editor.html";
+    	}
+    });
+</script>
+<script type="text/javascript">
+    $(function(right) {
+        $(".right .wantEditor .input-title").keydown(function(e) {
+            // layer.msg(e.which);
+            if(e.which== 13){
+               var name= $(this).val();
+            }
+        });
+    });
+    $('.right .function-tool .compress').click(function(){
+    	window.location.href='./editor.html';
+    });
+</script>
+<script>
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        	layer.msg('按Esc退出',{
+        		time : 2000
+        	});
+            $('.right .function-tool .forward').hover(function() {
+                var that = this;
+                var index= layer.tips('直接发布',this);
+             	$(this).mouseleave(function(event) {
+                	layer.close(index);	
+                });
+            });
+            $('.right .function-tool .compress').mouseenter(function() {
+                var that = this;
+                var index = layer.tips('普通模式',this);
+            	$(this).mouseleave(function(event) {
+                	layer.close(index);
+            	});
+            });
+            $('.right .function-tool .floppy-o').mouseenter(function() {
+                var that = this;
+                var index = layer.tips('保存',this);
+                $(this).mouseleave(function(event) {
+                	layer.close(index);
+                });
+            });
+            $('.right .function-tool .floppy-o').on('click',function(){
+                layer.msg('已保存');
+            })          
+    });    
+</script> 
+</html>
